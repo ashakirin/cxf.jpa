@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Export-Package: org.talend.ps.jpa.persistence;uses:="javax.persistence
+ ",org.talend.ps.jpa.service;uses:="org.talend.jpa,org.talend.ps.jpa.p
+ ersistence"
+Built-By: ashakirin
+Tool: Bnd-1.15.0
+Bundle-Name: jpa.service
+Created-By: Apache Maven Bundle Plugin
+Meta-Persistence: META-INF/persistence.xml
+Export-Service: org.talend.ps.jpa.persistence.PersistenceHelper
+Require-Bundle: org.apache.cxf.bundle,org.springframework.beans
+Build-Jdk: 1.6.0_22
+Bundle-Version: 0.1.0.SNAPSHOT
+Bnd-LastModified: 1346426425628
+Bundle-ManifestVersion: 2
+Bundle-Description: This pom bundles all properties and settings that 
+ are shared amont all        CXF projects.
+Import-Package: javax.persistence;version="[2.0,3)",org.osgi.service.b
+ lueprint;version="[1.0.0,2.0.0)",org.talend.jpa
+Bundle-SymbolicName: jpa.service
+

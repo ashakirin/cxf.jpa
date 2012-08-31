@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://www.talend.org/jpa"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	name="WSJPAService" 
+	targetNamespace="http://www.talend.org/jpa">
+   <wsdl:types>
+    <xsd:schema targetNamespace="http://www.talend.org/jpa">
+	<xsd:complexType name="personType">
+		<xsd:sequence>
+			<xsd:element name="id" type="xsd:string"/>
+			<xsd:element name="name" type="xsd:string"/>
+			<xsd:element name="twitterName" type="xsd:string"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="idType">
+		<xsd:sequence>
+			<xsd:element name="id" type="xsd:string"/>
+		</xsd:sequence>
+	</xsd:complexType>
+      <xsd:element name="persistRequest" type="tns:personType"/>
+      <xsd:element name="persistResponse" type="xsd:string"/>
+      <xsd:element name="deleteRequest" type="tns:idType"/>
+      <xsd:element name="deleteResponse" type="xsd:string"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="persistRequest">
+    <wsdl:part element="tns:persistRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="persistResponse">
+    <wsdl:part element="tns:persistResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="deleteRequest">
+    <wsdl:part element="tns:deleteRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="deleteResponse">
+    <wsdl:part element="tns:deleteResponse" name="parameters"/>
+  </wsdl:message>
+  
+  <wsdl:portType name="JPAService">
+    <wsdl:operation name="persist">
+      <wsdl:input message="tns:persistRequest"/>
+      <wsdl:output message="tns:persistResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="delete">
+      <wsdl:input message="tns:deleteRequest"/>
+      <wsdl:output message="tns:deleteResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  
+  <wsdl:binding name="JPAServiceSOAP" type="tns:JPAService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="persist">
+      <soap:operation soapAction="http://www.talend.org/jpa/persist"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="delete">
+      <soap:operation soapAction="http://www.talend.org/jpa/delete"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  
+  <wsdl:service name="JPAService">
+    <wsdl:port binding="tns:JPAServiceSOAP" name="JPAServiceSOAP">
+      <soap:address location="http://localhost:8040/services/JPAService/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Export-Package: org.talend.jpa;uses:="javax.xml.bind.annotation,javax.
+ jws.soap,javax.jws,javax.xml.ws,javax.xml.namespace,javax.xml.bind"
+Built-By: ashakirin
+Tool: Bnd-1.15.0
+Bundle-Name: jpa.common
+Created-By: Apache Maven Bundle Plugin
+Require-Bundle: org.apache.cxf.bundle,org.springframework.beans
+Build-Jdk: 1.6.0_22
+Bundle-Version: 0.1.0.SNAPSHOT
+Bnd-LastModified: 1346426423958
+Bundle-ManifestVersion: 2
+Bundle-Description: This pom bundles all properties and settings that 
+ are shared amont all        CXF projects.
+Import-Package: javax.jws,javax.jws.soap,javax.xml.bind,javax.xml.bind
+ .annotation,javax.xml.namespace,javax.xml.ws
+Bundle-SymbolicName: jpa.common
+
